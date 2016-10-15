@@ -1,0 +1,35 @@
+<h1 align="center">Женская одежда</h1>
+<div class="product">
+    <div class="container">
+        <div class="col-md-9 product1">
+            <div class=" bottom-product">
+                <?php foreach ($clothess as $clothes) :?>
+                <div class="col-md-3 bottom-cd simpleCart_shelfItem">
+                    <div class="product-at">
+                        <a href="/cart?action=add&id=<?=$clothes['id']?>"><img class="img-responsive" src="/images/clothes/<?=$clothes['id']?>.jpg" alt="">
+                            <div class="pro-grid">
+                                <span class="item_add" href="/clothesdetails-<?=$clothes['id']?>.html">Купить</span>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="tun"><?=$clothes['title']?></p>
+                    <a href="/clothesdetails-<?=$clothes['id']?>.html" class="item_add2"><p class="number item_price"><?=$clothes['price']?></p></a><br>
+                </div>
+                <?php endforeach;?>
+            </div>
+
+        </div>
+        <div class="clearfix"> </div>
+        <nav class="in">
+            <ul class="pagination">
+                <?php foreach ($pagination->buttons as $button) :
+                    if ($button->isActive) : ?>
+                        <li><a href="/clothes-<?=$button->page?>.html"><?=$button->text?><span class="sr-only"><?=$button->text?></span></a></li>
+                    <?php else : ?>
+                        <li class="disabled"><span aria-hidden="true"><?=$button->text?></span></li>
+                    <?php endif;?>
+                <?php endforeach;?>
+                
+        </nav>
+    </div>
+</div>

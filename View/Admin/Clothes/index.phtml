@@ -1,0 +1,27 @@
+<h1>Clothes</h1>
+<b><?=\Library\Session::getFlash()?></b>
+    <div class="table-responsive">
+        <table width="100%" border="1" class="table">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+
+<?php foreach ($clothess as $clothes): ?>
+    <tr>
+        <td><?=$clothes['id']?></td>
+        <td><?=$clothes['title']?></td>
+        <td><?=$clothes['price']?></td>
+        <td><?=$clothes['status']?></td>
+        <td>
+            <a href="/admin/clothes/edit/<?=$clothes['id']?>">Edit</a>
+            <a href="/admin/delete/<?=$clothes['id']?>" onclick="return confirm('Are you sure')">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+
+        </table>
+    </div>

@@ -1,0 +1,19 @@
+<h1>Clothes edit</h1>
+<b><?=\Library\Session::getFlash()?></b>
+<form method="post" enctype="multipart/form-data">
+    Title: <input class="form-control" type="text" name="title" value="<?=$form->title?>"> <br>
+    Price: <input class="form-control" type="text" name="price" value="<?=$form->price?>"> <br>
+    Style: <select name="style" class="form-control">
+        <?php foreach ($styles as $style) :?>
+            <option value="<?=$style['id']?>" <?=$style['id']==$clothes['style_id'] ? 'selected' : ''?> ><?=$style['name']?></option>
+        <?php endforeach?>
+    </select>
+    Description:<textarea class="form-control" name="description"><?=$form->description?></textarea>
+
+    <input type="hidden" value="1" name="status">
+
+<!--    <input type="file" name="document" multiple>-->
+
+    <button class="btn btn-success">Go</button>
+<!--    <button>Goo</button>-->
+</form>

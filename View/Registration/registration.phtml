@@ -1,0 +1,48 @@
+
+<div class="container">
+    <div class="register">
+        <h1>Регистрация</h1>
+        <h1 align="center" id="flash"><?=\Library\Session::getFlash()?></h1>
+        <h1 align="center"><?=\Library\Session::getFlash()?></h1>
+        <script>
+            function check() {
+                var username = document.getElementById('username');
+                var email = document.getElementById('email');
+
+                var res = username.value != '' && email.value != '';
+
+                if (!res) {
+                    flash.innerHTML = 'Заполните все поля';
+                }
+                return res;
+
+            }
+        </script>
+        <form method="post" onsubmit="return check()">
+            <div class="col-md-6 register-top-grid">
+                <h3>Персональная информация</h3>
+                <div>
+                    <span>Имя Пользователя</span>
+                    <input type="text" id="username" name="username" value="<?=$form->getUsername(); ?>"/>
+                </div>
+                <div>
+                    <span>Email Адрес</span>
+                    <input type="email" id="email" name="email" value="<?=$form->getEmail(); ?>"/>
+                </div>
+            </div>
+            <div class="col-md-6 register-bottom-grid">
+                <h3>Пароль</h3>
+                <div>
+                    <span>Пароль</span>
+                    <input type="password" name="password"/>
+                </div>
+                <div>
+                    <span>Подтверждение пароля</span>
+                    <input type="password" name="passwordConfirm"/>
+                </div>
+                <input type="submit"/>
+            </div>
+            <div class="clearfix"> </div>
+        </form>
+    </div>
+</div>

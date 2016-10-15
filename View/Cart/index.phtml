@@ -1,0 +1,49 @@
+
+<div class="container">
+    <div class="check">
+        <div align="center">
+            <h1><b>Моя корзина покупателя</b></h1>
+        <h2><?=\Library\Session::getFlash()?></h2></div>
+        <?php if ($clothess != '') {foreach ($clothess as $clothes) :?>
+                <script>
+                    $(document).ready(function(c) {
+                        $('.close1').on('click', function(c){
+                            $('.cart-header').fadeOut('slow', function(c){
+                                document.location.href = "/cart?action=delete&id=<?=$clothes['id']?>";
+                                $('.cart-header').remove();
+                            });
+                        });
+                    });
+                </script>
+        <div class="col-md-9 cart-items">
+            <div class="cart-header">
+                <div class="close1"> </div>
+                <div class="cart-sec simpleCart_shelfItem">
+                    <div class="cart-item cyc">
+                        <img src="/images/clothes/<?=$clothes['id']?>.jpg" class="img-responsive" alt=""/>
+                    </div>
+                    <div class="cart-item-info">
+                        <h3><a href="/clothesdetails-<?=$clothes['id']?>.html"><?=$clothes['title']?></a><span><?=$clothes['price']?></span></h3>
+                        <div class="delivery">
+                            <span>Доставка в течении 2-3 рабочих дней</span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <?php endforeach;}?>
+        <div class="col-md-3 cart-total" style="float: right" >
+            <ul class="total_price">
+                <li class="last_price" > <h4>Общая сумма</h4></li>
+                <li class="last_price"><span  class="simpleCart_total<?php if ($cart->isEmpty()){ ?> simpleCart_empty<?php } ?>"></span></li>
+                <div class="clearfix"></div>
+            </ul>
+            <div class="clearfix"></div>
+            <a class="order" href="">Сделать заказ</a>
+            <a class="order simpleCart_empty" href="/cart?action=clear">Очистить корзину</a><br>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+
